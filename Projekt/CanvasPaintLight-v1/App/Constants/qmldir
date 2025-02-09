@@ -1,0 +1,4 @@
+Module App.Constants
+
+singleton Properties 1.0 Properties.qml
+singleton Theme 1.0 Theme.qml

@@ -1,0 +1,5 @@
+Module App.Bars
+
+ShapeBar 1.0 ShapeBar.qml
+ShapeToolBar 1.0 ShapeToolBar.qml
+ImageBar 1.0 ImageBar.qml

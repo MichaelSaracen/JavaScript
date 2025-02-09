@@ -1,0 +1,9 @@
+Module App.Components
+
+FilterItem 1.0 FilterItem.qml
+ItemInformation 1.0 ItemInformation.qml
+ItemPositioner 1.0 ItemPositioner.qml
+LayerItem 1.0 LayerItem.qml
+MyMenuBar 1.0 MyMenuBar.qml
+RectangleItem 1.0 RectangleItem.qml
+SelectionRect 1.0 SelectionRect.qml

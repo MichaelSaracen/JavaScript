@@ -1,0 +1,49 @@
+{
+    "QEP": {
+        "fragmentCode": [
+            "void main() {",
+            "    fragColor = texture(iSource, texCoord);",
+            "    @nodes",
+            "    fragColor = fragColor * qt_Opacity;",
+            "}",
+            ""
+        ],
+        "nodes": [
+            {
+                "custom": false,
+                "description": "The effect is similar to what happens when a colorized glass is put on top of a grayscale image. The color for the overlay is given in the RGBA format.",
+                "enabled": true,
+                "fragmentCode": [
+                    "fragColor = vec4(mix(fragColor.rgb/max(fragColor.a, 0.00390625), colorOverlayColor.rgb/max(colorOverlayColor.a, 0.00390625), colorOverlayColor.a) * fragColor.a, fragColor.a);"
+                ],
+                "id": "color_overlay",
+                "name": "Color Overlay",
+                "properties": [
+                    {
+                        "defaultValue": "0, 0, 0, 0",
+                        "description": "This property defines the color value which is used to colorize the source.\n\nBy default, the property is set to \\c \"transparent\".",
+                        "displayName": "Color",
+                        "name": "colorOverlayColor",
+                        "type": "color",
+                        "value": "1, 0.38, 0.376, 1"
+                    }
+                ],
+                "version": 1
+            }
+        ],
+        "previewColor": "#dddddd",
+        "previewImage": "images/preview0.png",
+        "tool": "EffectComposer",
+        "version": 1,
+        "vertexCode": [
+            "void main() {",
+            "    texCoord = qt_MultiTexCoord0;",
+            "    fragCoord = qt_Vertex.xy;",
+            "    vec2 vertCoord = qt_Vertex.xy;",
+            "    @nodes",
+            "    gl_Position = qt_Matrix * vec4(vertCoord, 0.0, 1.0);",
+            "}",
+            ""
+        ]
+    }
+}
