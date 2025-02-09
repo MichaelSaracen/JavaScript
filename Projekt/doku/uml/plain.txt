@@ -1,0 +1,103 @@
+@startuml
+
+skin rose
+
+title Canvas Paint - Class Diagram
+
+class AbstractItem {
+  + x: Number
+  + y: Number
+  + width: Number
+  + height: Number
+  + selected: Boolean
+  + name: String
+  + mid: Number
+  + opacity: Number
+  + z: Number
+  + itemType: String
+  + compositionMode: CanvasEngine.CompositionMode
+  + compositionName: String
+
+  + AbstractItem(x: Number, y: Number, width: Number, height: Number)
+  + bottom(): Number
+  + left(): Number
+  + right(): Number
+  + top(): Number
+  + centerX(): Number
+  + centerY(): Number
+  + draw(): void
+  + move(x: Number, y: Number): void
+  + setPosition(x: Number, y: Number): void
+  + setGeometry(x: Number, y: Number, width: Number, height: Number): void
+  + isFilled(): Boolean
+  + unselect(): void
+  + setCompositionMode(mode: CanvasEngine.CompositionMode): void
+}
+
+class TextItem {
+  + text: String
+  + fontFamily: String
+  + fontPixelSize: Number
+  + fontWeight: Number
+  + textColor: Color
+  + TextItem(x: Number, y: Number, width: Number, height: Number, text: String)
+}
+
+class ImageItem {
+  + source: String
+  + isMerged: Boolean
+  + ImageItem(x: Number, y: Number, width: Number, height: Number, source: String, isMerged: Boolean)
+  + draw(): void
+  + static mergeToImage(minX: Number, minY: Number, completeWidth: Number, completeHeight: Number): Image
+}
+
+class AbstractShape {
+  + strokeStyle: Color
+  + fillStyle: Color
+  + lineWidth: Number
+  + AbstractShape(x: Number, y: Number, width: Number, height: Number)
+  + setFillStyle(clr: Color): void
+}
+
+class LineShape {
+  + LineShape(x: Number, y: Number, width: Number, height: Number)
+  + draw(): void
+}
+
+class RectangleShape {
+  + radius: Number
+  + RectangleShape(x: Number, y: Number, width: Number, height: Number, radius: Number)
+  + draw(): void
+}
+
+class EllipseShape {
+  + EllipseShape(x: Number, y: Number, width: Number, height: Number)
+  + draw(): void
+}
+
+class ArcShape {
+  + from: Number
+  + to: Number
+  + ArcShape(x: Number, y: Number, width: Number, height: Number, from: Number, to: Number)
+  + draw(): void
+}
+
+class PieShape {
+  + from: Number
+  + to: Number
+  + PieShape(x: Number, y: Number, width: Number, height: Number, from: Number, to: Number)
+  + draw(): void
+}
+
+
+AbstractItem <|-down- TextItem: Inheritance
+AbstractItem <|-down- ImageItem: Inheritance
+AbstractItem <|-down- AbstractShape: Inheritance
+
+AbstractShape <|-down- LineShape: Inheritance
+AbstractShape <|-down- RectangleShape: Inheritance
+AbstractShape <|-down- EllipseShape: Inheritance
+AbstractShape <|-down- ArcShape: Inheritance
+AbstractShape <|-down- PieShape: Inheritance
+
+@enduml
